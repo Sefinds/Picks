@@ -1,0 +1,36 @@
+{
+  "name": "Party Pick",
+  "short_name": "PP",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background-color": "#f32186",
+  "theme-color": "#ef21f3",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "icons/icon512.jpg",
+      "type": "image/jpg",
+      "sizes": "512x512"
+    },
+    {
+      "src": "icons/icon-96x96.jpg",
+      "type": "image/jpg",
+      "sizes": "96x96"
+    },
+    {
+      "src": "icons/icon-72x72.jpg",
+      "type": "image/jpg",
+      "sizes": "72x72"
+    },
+    {
+      "src": "icons/icon-128x128.jpg",
+      "type": "image/jpg",
+      "sizes": "128x128"
+    },
+    {
+      "src": "icons/icon-192x192.jpg",
+      "type": "image/jpg",
+      "sizes": "192x192"
+    }
+  ]
+}

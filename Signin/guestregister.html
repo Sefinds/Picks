@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pickapick - Wellcome</title>
+  <!--Links-->
+  <link rel="manifest" href="../manifest.json">
+  <script src="../main.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="../stylegeral.css">
+</head>
+
+<body>
+  <div onload="myFunction">
+    <div class="wrapper-1">
+
+      <div class="wrapper-3">
+        <div class="wrapperitem-3">
+        <a href="../index.html">
+          <img src="../img/back.png" alt="" style="width:30px;height:30px;">
+          </a>
+        </div>
+      </div>
+
+      <div class="wrapperitem-1">
+        <span class="text_Display" style="font-size: 32px;">Pick a Guest</span><br>
+        <span class="text_rounded" style="font-weight: Regular; font-size: 20px;color:rgba(0, 0, 0, 0.46000000834465027);">Thank you for being here.</span>
+      </div><br><br>
+
+      <div class="wrapper-4">
+        <div class="wrapperitem-4"></div>
+        <div class="wrapperitem-4">
+          <button id="1" style="background: rgba(166, 166, 166, 1);  border-color: rgba(102, 102, 102, 1);">
+            <img id="guest1" src="">
+          </button>
+        </div>
+        <div class="wrapperitem-4">
+          <button id="2" style="background: rgba(166, 166, 166, 1);  border-color: rgba(102, 102, 102, 1);">
+            <img id="guest2" src="" style="align-content: center;">
+          </button>
+        </div>
+        <div class="wrapperitem-4"></div>
+      </div>
+
+      <br><br><br><br>
+      <div class="wrapperitem-1">
+        <a href="../Home/home.html" class="enter" id="enter">
+          <div class="button-caixa">
+            <div class="button-cor" style="background:rgba(201, 201, 201, 0.8100000023841858);">
+              <span class="button-text">Let’s Go</span>
+            </div>
+          </div>
+        </a>
+      </div>
+      <br><br><br><br><br><br>
+
+      <div class="wrapperitem-1">
+        <div class="text_rounded" style="font-weight: Regular; font-size: 15px;">
+          <p>Create an account to Pick a Pick and save your <br> High Scores!<br><br>
+            <a href="register.html">Register now</a>
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <script src="../firebase.js" type="module"></script>
+
+  <script type="module">
+    import {
+      auth,
+      db,
+      user
+    } from "../firebase.js";
+    import {
+      onAuthStateChanged
+    } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-auth.js";
+    import {
+      getFirestore,
+      collection,
+      addDoc,
+      doc,
+      setDoc,
+      updateDoc,
+      getDocs,
+      onSnapshot,
+      getDoc
+    } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-firestore.js";
+    import {
+      getStorage,
+      ref,
+      uploadBytesResumable,
+      getDownloadURL,
+      getMetadata
+    } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-storage.js";
+
+    //buscar imagens da storage e fazer output delas
+    function myFunction() {
+      const storage = getStorage();
+
+      getDownloadURL(ref(storage, 'Picks/Guest1.png'))
+        .then((url) => {
+          const guest1img = document.getElementById('guest1');
+          guest1img.setAttribute('src', url);
+          console.log(url);
+        })
+      getDownloadURL(ref(storage, 'Picks/Guest2.png'))
+        .then((url) => {
+          const guest2img = document.getElementById('guest2');
+          guest2img.setAttribute('src', url);
+        })
+        .catch((error) => {
+          // Handle any errors
+        });
+    }
+    console.log(myFunction())
+    window.myFunction = myFunction;
+
+    //Guest1
+    document.getElementById("1").addEventListener('click', (e) => {
+      sessionStorage.setItem('img', 'https://firebasestorage.googleapis.com/v0/b/picks-5fe86.appspot.com/o/Picks%2FGuest1.png?alt=media&token=1e573b2e-9e35-4e1e-8c04-7963965db850');
+      sessionStorage.setItem('imgcolor', 'rgba(166, 166, 166, 1)');
+      sessionStorage.setItem('bordercolor', 'rgba(102, 102, 102, 1)');
+    });
+    //Guest2
+    document.getElementById("2").addEventListener('click', (e) => {
+      sessionStorage.setItem('img', 'https://firebasestorage.googleapis.com/v0/b/picks-5fe86.appspot.com/o/Picks%2FGuest2.png?alt=media&token=f8650531-4410-455b-882a-1afd57e1ff21');
+      sessionStorage.setItem('imgcolor', 'rgba(166, 166, 166, 1)');
+      sessionStorage.setItem('bordercolor', 'rgba(102, 102, 102, 1)');
+    });
+
+
+    document.getElementById("letsgo").addEventListener('click', (e) => {
+      var imgs = sessionStorage.getItem('img');
+      var imgscolor = sessionStorage.getItem('imgcolor');
+      var bordercolors = sessionStorage.getItem('bordercolor');
+      console.log(username);
+
+
+      localStorage.setItem('users', JSON.stringify(user.data()));
+      window.location.href = "../Home/home.html";
+
+      updateDoc(ref, {
+        username: username,
+        pick: imgs,
+        pickcolor: imgscolor,
+        pickborder: bordercolors
+      }).then(() => {
+        alert("data added sucessfully");
+      });
+    });
+  </script>
+
+</body>
+
+</html>

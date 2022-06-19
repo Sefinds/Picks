@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link href="https://fonts.googleapis.com/css?family=SF+Pro+Rounded&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=SF+Pro+Display&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+  <div class="v395_1790">
+    <a href="game.html" class="v395_1791">
+      <div class="v395_1792"></div>
+      <div class="v395_1793"></div><span class="v395_1794">Play</span>
+    </a>
+
+    <div class="v395_1795">
+      <div class="v395_1796"></div>
+      <div class="v395_1797"></div>
+      <div class="v395_1798">
+        <div class="v395_1799"></div>
+      </div>
+    </div>
+
+    <div class="name"></div>
+    <div class="name"></div>
+    <div class="name"></div>
+
+    <span class="v395_1804">Highest score:</span>
+    <span class="v395_1805">12</span>
+    <span class="v395_1806">Tic-Tac-Toe</span>
+    <div class="v395_1807"></div>
+    <span class="v395_1808">The player who succeeds in placing three of their marks in a horizontal,
+      vertical, or diagonal row is the winner.</span>
+    <div class="name"></div>
+  </div>
+
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-size: 14px;
+    }
+
+    .v395_1790 {
+      width: 390px;
+      height: 844px;
+      background: rgba(255, 252, 247, 1);
+      opacity: 1;
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+      border-bottom-left-radius: 20px;
+      border-bottom-right-radius: 20px;
+      overflow: hidden;
+    }
+
+    .v395_1791 {
+      width: 217px;
+      height: 69px;
+      background: url("../images/v395_1791.png");
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;
+      opacity: 1;
+      position: absolute;
+      top: 730px;
+      left: 88px;
+      overflow: hidden;
+    }
+
+    .v395_1792 {
+      width: 213px;
+      height: 64px;
+      background: rgba(243, 177, 205, 1);
+      opacity: 1;
+      position: absolute;
+      top: 5px;
+      left: 4px;
+      border-top-left-radius: 32px;
+      border-top-right-radius: 32px;
+      border-bottom-left-radius: 32px;
+      border-bottom-right-radius: 32px;
+      overflow: hidden;
+    }
+
+    .v395_1793 {
+      width: 213px;
+      height: 65px;
+      background: rgba(255, 255, 255, 0);
+      opacity: 1;
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      border: 1px solid rgba(0, 0, 0, 1);
+      border-top-left-radius: 32px;
+      border-top-right-radius: 32px;
+      border-bottom-left-radius: 32px;
+      border-bottom-right-radius: 32px;
+      overflow: hidden;
+    }
+
+    .v395_1794 {
+      width: 101px;
+      color: rgba(0, 0, 0, 1);
+      position: absolute;
+      top: 11px;
+      left: 55px;
+      font-family: SF Pro Rounded;
+      font-weight: Regular;
+      font-size: 24px;
+      opacity: 1;
+      text-align: center;
+    }
+
+    .v395_1795 {
+      width: 395px;
+      height: 633px;
+      background: url("../images/v395_1795.png");
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;
+      opacity: 1;
+      position: absolute;
+      top: 54px;
+      left: 3px;
+      overflow: hidden;
+    }
+
+    .v395_1796 {
+      width: 395px;
+      height: 633px;
+      background: rgba(194, 213, 168, 1);
+      opacity: 1;
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      border-top-left-radius: 89px;
+      border-top-right-radius: 89px;
+      border-bottom-left-radius: 89px;
+      border-bottom-right-radius: 89px;
+      overflow: hidden;
+    }
+
+    .v395_1797 {
+      width: 395px;
+      height: 633px;
+      background: rgba(243, 177, 205, 1);
+      opacity: 1;
+      position: absolute;
+      top: 0px;
+      left: 1px;
+      border-top-left-radius: 89px;
+      border-top-right-radius: 89px;
+      border-bottom-left-radius: 89px;
+      border-bottom-right-radius: 89px;
+      overflow: hidden;
+    }
+
+    .v395_1798 {
+      width: 90px;
+      height: 80px;
+      background: url("../images/v395_1798.png");
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;
+      opacity: 1;
+      position: absolute;
+      top: 590px;
+      left: 152px;
+      transform: rotate(-4deg);
+      overflow: hidden;
+    }
+
+    .v395_1799 {
+      width: 90px;
+      height: 80px;
+      background: url("../images/v395_1799.png");
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;
+      opacity: 1;
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      transform: rotate(-4deg);
+      overflow: hidden;
+    }
+
+    .name {
+      color: #fff;
+    }
+
+    .name {
+      color: #fff;
+    }
+
+    .name {
+      color: #fff;
+    }
+
+    .v395_1804 {
+      width: 154px;
+      color: rgba(0, 0, 0, 1);
+      position: absolute;
+      top: 639px;
+      left: 88px;
+      font-family: SF Pro Rounded;
+      font-weight: Semibold;
+      font-size: 24px;
+      opacity: 1;
+      text-align: left;
+    }
+
+    .v395_1805 {
+      width: 26px;
+      color: rgba(0, 0, 0, 1);
+      position: absolute;
+      top: 639px;
+      left: 253px;
+      font-family: SF Pro Rounded;
+      font-weight: Semibold;
+      font-size: 24px;
+      opacity: 1;
+      text-align: left;
+    }
+
+    .v395_1806 {
+      width: 233px;
+      color: rgba(0, 0, 0, 1);
+      position: absolute;
+      top: 64px;
+      left: 78px;
+      font-family: SF Pro Display;
+      font-weight: Medium;
+      font-size: 24px;
+      opacity: 1;
+      text-align: center;
+    }
+
+    .v395_1807 {
+      width: 136px;
+      height: 136px;
+      background: url("../images/v395_1807.png");
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;
+      opacity: 1;
+      position: absolute;
+      top: 148px;
+      left: 121px;
+      overflow: hidden;
+    }
+
+    .v395_1808 {
+      width: 304px;
+      color: rgba(0, 0, 0, 1);
+      position: absolute;
+      top: 334px;
+      left: 42px;
+      font-family: SF Pro Rounded;
+      font-weight: Medium;
+      font-size: 24px;
+      opacity: 1;
+      text-align: center;
+    }
+
+    .name {
+      color: #fff;
+    }
+  </style>
+</body>
+
+</html>

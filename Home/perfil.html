@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="manifest" href="../manifest.json">
+  <script src="../main.js"></script>
+  <!-- JavaScript Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  <link rel="stylesheet" href="../stylegeral.css">
+  <title>home</title>
+  <style>
+  .back {
+    height: 501px;
+    background: rgba(255, 193, 97, 1);
+    border-bottom-left-radius: 89px;
+    border-bottom-right-radius: 89px;
+  }
+
+  .profil-box {
+    width: 117px;
+    height: 116px;
+    border: 4px solid;
+    border-radius: 50%;
+  }
+  </style>
+</head>
+
+<body onload="myFunction">
+
+  <div class="wrapper-1">
+    <div id="back" class="back">
+
+      <div class="wrapper-3">
+        <div class="wrapperitem-3">
+          <a href="home.html">
+            <img src="../img/back.png" alt="HTML tutorial" style="width:30px;height:30px;">
+          </a>
+        </div>
+        <div class="wrapperitem-3">
+          <span class="text_Display">Settings</span>
+        </div>
+      </div>
+
+      <div class="wrapper-1">
+        <div class="wrapperitem-1">
+          <button id="profil-box" class="profil-box">
+            <img src="" id="userimg" alt="" style="width: 75px; height: 82px; align: center;">
+          </button> <br> <span id="username" class="text_rounded" style="font-size: 24px;"> </span>
+        </div>
+      </div>
+
+
+      <div class="wrapper-go">
+        <div class="wrapperitem-go"></div>
+        <div class="wrapperitem-go">
+              <span class="text_rounded" style="font-size: 20px;">Level</span><br>
+              <span class="text_rounded" style="font-size: 32px;">1</span>
+        </div>
+
+        <div class="wrapperitem-go">
+          <div id="descriptionbox" style="width: 245px;height: 82px;border-radius: 23px;">
+              <span class="text_rounded" style="font-size: 15px;text-align: right;">This is a small description</span>
+          </div>
+        </div>
+      </div><br><br><br><br><br><br><br>
+
+
+      <div class="wrapper-2">
+        <div class="wrapperitem-2"></div>
+        <div class="wrapperitem-2">
+          <img src="../img/allgames.png" alt="" style="width: 26px;height: 26px;">
+          <span class="text_rounded" style="font-size: 20px;">Last Plays</span>
+        </div>
+      </div>
+
+      <div class="wrapper-2">
+        <div class="wrapperitem-2"></div>
+        <div class="wrapperitem-2">
+          <div class="minibox">
+            <div class="miniboxcolor" style="background: rgba(176, 171, 203, 1);">
+              <br><img src="../img/rps.png" style="text-align: center;"><br><br>
+              <span class="miniboxtext">Rock Paper Scissors</span>
+            </div>
+          </div>
+        </div>
+        <div class="wrapperitem-2">
+          <div class="minibox">
+            <div class="miniboxcolor" style="background: rgba(176, 171, 203, 1);">
+              <br><img src="../img/rps.png" style="text-align: center;"><br><br>
+              <span class="miniboxtext">Rock Paper Scissors</span>
+            </div>
+          </div>
+        </div>
+        <div class="wrapperitem-2"></div>
+        <div class="wrapperitem-2">
+          <div class="minibox">
+            <div class="miniboxcolor" style="background: rgba(176, 171, 203, 1);">
+              <br><img src="../img/rps.png" style="text-align: center;"><br><br>
+              <span class="miniboxtext">Rock Paper Scissors</span>
+            </div>
+          </div>
+        </div>
+        <div class="wrapperitem-2">
+          <div class="minibox">
+            <div class="miniboxcolor" style="background: rgba(176, 171, 203, 1);">
+              <br><img src="../img/rps.png" style="text-align: center;"><br><br>
+              <span class="miniboxtext">Rock Paper Scissors</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <script src="../firebase.js" type="module"></script>
+
+  <script type="module">
+    import {
+      auth,
+      user,
+      db
+    } from "../firebase.js";
+    import {
+      onAuthStateChanged
+    } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-auth.js";
+    import {
+      collection,
+      addDoc,
+      doc,
+      setDoc,
+      updateDoc,
+      getDocs,
+      onSnapshot,
+      getDoc
+    } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-firestore.js";
+
+
+
+    function myFunction() {
+
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          console.log('user logged');
+
+          const uid = user.uid;
+          const ref = doc(db, 'Users', uid);
+
+        } else {
+          console.log('User is signed out');
+        }
+      });
+
+      var user = JSON.parse(localStorage.getItem('users'));
+      //console.log(user.username);
+      document.getElementById("username").textContent = (user.username);
+
+      //console.log(user.pick);
+      document.getElementById("userimg").src = (user.pick);
+
+      document.getElementById('profil-box').style.backgroundColor = (user.pickcolor);
+      document.getElementById('profil-box').style.borderColor = (user.pickborder);
+
+      document.getElementById('back').style.backgroundColor = (user.pickcolor);
+      document.getElementById('descriptionbox').style.backgroundColor = (user.pickcolor);
+    };
+
+    console.log(myFunction())
+    window.myFunction = myFunction;
+  </script>
+</body>
+
+</html>

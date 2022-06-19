@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="manifest" href="../manifest.json">
+  <!--Links-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="registerstyle.css">
+  <title>register</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-4">
+        <a href="../index.html">
+          <img src="../img/back.png" alt="HTML tutorial" style="width:30px;height:30px;">
+        </a>
+        <span class="titulo">Welcome!</span>
+        <span class="subtitulo">Create an account, Its free.</span>
+
+  <!--    <form action="register1.html">-->
+        <div class="email">
+          <input type="text" class="text-line" id="email" name="email" placeholder="Email" required>
+        </div>
+
+        <div class="password">
+          <input type="text" class="text-line" id="password" name="password" placeholder="Password" required>
+        </div>
+
+        <div class="confirmpass">
+          <input type="text" class="text-line" id="confirm_password" name="confirm_password" placeholder="Confirm Password" required>
+        </div>
+
+        <a class="register" id="register">
+          <div class="register-color"></div>
+          <button class="register-box">
+            <span class="register-text" type="submit" id="signup" name="signup_submit" value="Sign up">Register</span>
+          </button>
+
+        </a>
+  <!--   </form>-->
+
+        <span class="continueW-text">
+          <img src="../img/line 4.png" alt=""></img>
+          or continue with
+          <img src="../img/line 5.png" alt=""></img>
+        </span>
+
+        <a href="" class="google">
+          <div class="google-box"></div>
+          <div class="google-img"></div>
+        </a>
+
+        <a href="" class="apple">
+          <div class="apple-img"></div>
+          <div class="apple-box"></div>
+        <a/>
+
+        <a href="" class="facebook">
+          <div class="facebook-img"></div>
+          <div class="facebook-box"></div>
+        </a>
+
+        <span class="alreadyhere-text">
+          <p>Already have an account?<a href="login.html"> Log in</a></p>
+        </span>
+
+        <div class="play-guest">
+          <p>Don’t want an account? <a href="guestregister.html">Play as a Guest</a></p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+<!-- script links -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="../main.js"></script>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.2/firebase-app.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.8.2/firebase-analytics.js";
+import { getDatabase, set, ref, child, get } from "https://www.gstatic.com/firebasejs/9.8.2/firebase-database.js";
+import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.8.2/firebase-auth.js";
+import {
+  getFirestore,
+  collection,
+  getDocs,
+  doc,
+  getDoc,
+  setDoc,
+  addDoc,
+  deleteDoc,
+  updateDoc,
+  deleteField,
+  query,
+  where,
+  limit,
+  orderBy,
+  onSnapshot
+} from "https://www.gstatic.com/firebasejs/9.8.2/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBBjsMt2Hxo88gw-6wqgd1VkE0XKNonLdY",
+  authDomain: "picks-5fe86.firebaseapp.com",
+  databaseURL: "https://picks-5fe86-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "picks-5fe86",
+  storageBucket: "picks-5fe86.appspot.com",
+  messagingSenderId: "704897507066",
+  appId: "1:704897507066:web:1412d543ec7c77b5e87343",
+  measurementId: "G-1L5G0F2RM9"
+};
+
+  document.addEventListener('DOMContentLoaded', () => {
+    //console.log(firebase);
+    //Your web apps Firebase configuration
+    var firebaseConfig = {};
+    //Initialize FIREBASE
+    const app = initializeApp(firebaseConfig);
+
+    const buttonCreateAccount = document.querySelector('button[name=signup_submit]');
+    register.addEventListener('click', (e) => {
+      const formData = {
+        email: document.querySelector('input[name=email]').value,
+        password: document.querySelector('input[name=password]').value,
+      };
+
+      firebase.auth().createUserWithEmailAndPassword(formData.email, formData.password)
+        .then(data => {
+          const uid = data.user.uid;
+
+          const users = firebase.firestore().collection('users');
+          users.doc(uid).set({
+            email: formData.email, password: formData.password
+          });
+          alert('conta criada com sucesso');
+        })
+        .catch(error => {
+          if (error.code == 'auth/email-already-in-use') {
+            alert('Esse email ja esta em uso por outro usario')
+          } else {
+            alert(error.message);
+          }
+          console.log(error);
+        });
+    });
+  });
+
+</script>
+
+</body>
+</html>
