@@ -1,23 +1,17 @@
-const cacheName = 'v3';
+const cacheName = 'v1';
 
 //inserir a quantidade de paginas que temos
 const cacheAssets = [
   'index.html',
-  'indexcss.css',
   'manifest.json',
   'main.js',
   'firebase.js',
   'stylegeral.css',
   'Home/home.html',
-  'Home/homestyle.css',
-  'Home/perfilstyle.css',
   'Home/perfil.html',
   'Home/definicoes.html',
-  'Home/defstyle.css',
   'Signin/login.html',
-  'Signin/loginstyle.css',
   'Signin/register.html',
-  'Signin/registerstyle.css',
   'Signin/register1.html',
   'Signin/register1.css',
   'Signin/guestregister.html',
